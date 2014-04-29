@@ -60,8 +60,8 @@ void myLerpDataCallback(const LerpData& data)
 
 	lerpAMinusBVector = lerpBVector - lerpAVector;
 	
-	lerpAVectorLerpPortion = Engine::LERP(lerpAVector, lerpBVector, data.beta);
-	lerpBVectorLerpPortion = Engine::LERP(lerpBVector, lerpAVector, data.beta);
+	lerpAVectorLerpPortion = lerpAVector * (1 - data.beta);
+	lerpBVectorLerpPortion = lerpBVector * data.beta;
 
 	lerpLerpResultVector = lerpAVectorLerpPortion + lerpBVectorLerpPortion;
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 	renderUI.setBasicVectorEquationData(myBasicVectorEquationData, &leftVector.X, &rightVector.X, &resultVector.X);
 	renderUI.setPerpendicularData(&originalVector.X, &normalVector.X, &cwPerpindicularVector.X, &ccwPerpendicularVector.X, myPerpendicularDataCallback);
 	renderUI.setDotProductData(&dotProductVector1.X, &dotProductVector2.X, &dotProductProjectionVector.X, &dotProductRejectionVector.X, myDotProductDataCallback);
-	renderUI.setLerpData(&lerpAVector.X, &lerpBVector.X, &lerpAMinusBVector.X, &lerpAVectorLerpPortion.X, &lerpBVectorLerpPortion.X, &lerpLerpResultVector.X, myLerpDataCallback); 
+	renderUI.setLerpData(&lerpAVector.X, &lerpBVector.X, &lerpAMinusBVector.X, &lerpAVectorLerpPortion.X, &lerpBVectorLerpPortion.X, &lerpLerpResultVector.X, myLerpDataCallback);
 
 	if( ! renderUI.initialize(argc, argv))
 		return -1;
