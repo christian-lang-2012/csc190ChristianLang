@@ -1,6 +1,8 @@
 #include "Engine.h"
 
-int main()
+
+
+void main()
 {
 	Engine::sampleFunctionThatReturnsTrue();
 }

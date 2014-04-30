@@ -26,6 +26,7 @@ void myPerpendicularDataCallback(const PerpendicularData& data)
 	ccwPerpendicularVector = originalVector.PerpCCW();
 }
 
+
 Vector2 dotProductVector1;
 Vector2 dotProductVector2;
 Vector2 dotProductProjectionVector;
@@ -74,7 +75,7 @@ int main(int argc, char* argv[])
 
 	RenderUI renderUI;
 
-
+	//Setting the callbacks for the methods above.
 	renderUI.setBasicVectorEquationData(myBasicVectorEquationData, &leftVector.X, &rightVector.X, &resultVector.X);
 	renderUI.setPerpendicularData(&originalVector.X, &normalVector.X, &cwPerpindicularVector.X, &ccwPerpendicularVector.X, myPerpendicularDataCallback);
 	renderUI.setDotProductData(&dotProductVector1.X, &dotProductVector2.X, &dotProductProjectionVector.X, &dotProductRejectionVector.X, myDotProductDataCallback);
