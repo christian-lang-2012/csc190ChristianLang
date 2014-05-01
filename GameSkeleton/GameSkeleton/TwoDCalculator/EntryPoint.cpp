@@ -38,12 +38,12 @@ void myDotProductDataCallback(const DotProductData& data)
 
 	if(data.projectOntoLeftVector)
 	{
-		dotProductProjectionVector = dotProductVector1.Normalized() * Engine::Dot(dotProductVector2, dotProductVector1.Normalized());
+		dotProductProjectionVector = dotProductVector1.Normalized() * (Engine::Dot(dotProductVector2, dotProductVector1.Normalized()));
 		dotProductRejectionVector = dotProductVector2 - dotProductProjectionVector;
 	}
 	else
 	{
-		dotProductProjectionVector = dotProductVector2.Normalized() * Engine::Dot(dotProductVector1, dotProductVector2.Normalized());
+		dotProductProjectionVector = dotProductVector2.Normalized() * (Engine::Dot(dotProductVector1, dotProductVector2.Normalized()));
 		dotProductRejectionVector = dotProductVector1 - dotProductProjectionVector;
 	}
 }

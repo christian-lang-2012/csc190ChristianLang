@@ -83,7 +83,7 @@ namespace Engine{
 
 	static float Dot(const Vector2& left, const Vector2& right)
 	{
-		return (left.X * right.Y) + (left.Y * right.X);
+		return (left.X * right.X) + (left.Y * right.Y);
 	}
 
 	Vector2 operator+(const Vector2& left, const Vector2& right)
