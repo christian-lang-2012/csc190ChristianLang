@@ -11,7 +11,7 @@ namespace Engine{
 	{
 		float X;
 		float Y;
-		Vector2(float x = 0.0f, float y = 0.0f): X(x), Y(y)
+		explicit Vector2(float x = 0.0f, float y = 0.0f): X(x), Y(y)
 		{
 
 		}
@@ -21,14 +21,7 @@ namespace Engine{
 			return &X;
 		}
 
-		inline Vector2 LERP(Vector2 a, Vector2 b, float beta)
-		{
-			float lerpX = ((1-beta) * a.X) + (beta * b.X);
-			float lerpY = ((1-beta) * a.Y) + (beta * b.Y);
-			Vector2 lerpVector(lerpX, lerpY);
-			return lerpVector;
-
-		}
+		
 
 		inline float Length()
 		{
@@ -64,29 +57,36 @@ namespace Engine{
 			Vector2 cwVector((-1 * Y), X);
 			return cwVector;
 		}
-
-		float Dot(const Vector2& left, const Vector2& right)
+		
+		inline Vector2 self_Lerp(Vector2 b, float beta)
 		{
-			return (left.X * right.Y) + (left.Y * right.X);
+			float lerpX = ((1-beta) * X) + (beta * b.X);
+			float lerpY = ((1-beta) * Y) + (beta * b.Y);
+			Vector2 lerpVector(lerpX, lerpY);
+			return lerpVector;
+		}
+
+		inline float self_Dot(const Vector2& right)
+		{
+			return (X * right.X) + (Y * right.Y);
 		}
 
 	};
 
-	static Vector2 LERP(Vector2 a, Vector2 b, float beta)
+	inline Vector2 Lerp(Vector2 a, Vector2 b, float beta)
 	{
 		float lerpX = ((1-beta) * a.X) + (beta * b.X);
 		float lerpY = ((1-beta) * a.Y) + (beta * b.Y);
 		Vector2 lerpVector(lerpX, lerpY);
 		return lerpVector;
-
 	}
 
-	static float Dot(const Vector2& left, const Vector2& right)
+	inline float Dot(const Vector2& left, const Vector2& right)
 	{
 		return (left.X * right.X) + (left.Y * right.Y);
 	}
 
-	Vector2 operator+(const Vector2& left, const Vector2& right)
+	inline Vector2 operator+(const Vector2& left, const Vector2& right)
 	{
 		float resX = left.X + right.X;
 		float resY = left.Y + right.Y;
@@ -94,7 +94,7 @@ namespace Engine{
 		return result;
 	}
 
-	Vector2 operator-(const Vector2& left, const Vector2& right)
+	inline Vector2 operator-(const Vector2& left, const Vector2& right)
 	{
 		float resX = left.X + (-1 * right.X);
 		float resY = left.Y + (-1 * right.Y);
@@ -102,13 +102,13 @@ namespace Engine{
 		return result;
 	}
 
-	std::ostream& operator<<(std::ostream& stream, const Vector2& right)
+	inline std::ostream& operator<<(std::ostream& stream, const Vector2& right)
 	{
 		cout << "{x:" << right.X << ", y:" << right.Y << "}";
 		return stream;
 	}
 
-	Vector2 operator*(const float scalar, const Vector2& right)
+	inline Vector2 operator*(const float scalar, const Vector2& right)
 	{
 		float resX = (scalar * right.X);
 		float resY = (scalar * right.Y);
@@ -116,7 +116,7 @@ namespace Engine{
 		return result;
 	}
 
-	Vector2 operator*(const Vector2& left, const float scalar)
+	inline Vector2 operator*(const Vector2& left, const float scalar)
 	{
 		float resX = (scalar * left.X);
 		float resY = (scalar * left.Y);
@@ -124,7 +124,7 @@ namespace Engine{
 		return result;
 	}
 
-	Vector2 operator/(const float scalar, const Vector2& right)
+	inline Vector2 operator/(const float scalar, const Vector2& right)
 	{
 		float resX = (scalar / right.X);
 		float resY = (scalar / right.Y);
@@ -132,7 +132,7 @@ namespace Engine{
 		return result;
 	}
 
-	Vector2 operator/(const Vector2& right, const float scalar)
+	inline Vector2 operator/(const Vector2& right, const float scalar)
 	{
 		float resX = (right.X / scalar);
 		float resY = (right.Y / scalar);
