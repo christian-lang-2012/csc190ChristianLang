@@ -4,20 +4,33 @@
 
 using Core::Input;
 
-
 Spaceship mySpaceship;
+Boundary boundary;
 
 int SCREEN_WIDTH = 1900;
 int SCREEN_HEIGHT = 1000;
 float width = 1900;
 float height = 1000;
+int boudnaryTypeStuff = 1;
 
 bool Update(float dt)
 {
 	dt;
+	
+	if(Input::IsPressed('1'))
+	{
+		boudnaryTypeStuff = 1;
+	}
+	else if(Input::IsPressed('2'))
+	{
+		boudnaryTypeStuff = 2;
+	}
+	else if(Input::IsPressed('3'))
+	{
+		boudnaryTypeStuff = 3;
+	}
 
-	mySpaceship.update(dt);
-
+	mySpaceship.update(dt, boundary, boudnaryTypeStuff);
 	bool isPressed = Input::IsPressed(Input::KEY_ESCAPE);
 
 	return isPressed;
@@ -26,19 +39,14 @@ bool Update(float dt)
 void Draw(Core::Graphics& graphics)
 {
 	mySpaceship.draw(graphics);
-
-
-	/*graphics.SetColor(RGB(255,255,255));
-	graphics.DrawString(SCREEN_WIDTH/2 - 50, SCREEN_HEIGHT/2 -50, "Hello World");
-	graphics.DrawLine(10,01,400,300);*/
+	boundary.draw(graphics);
 }
-
-
 
 void main()
 {
 	mySpaceship.startingPosition = Vector2(width/2, height/2);
 	mySpaceship.currentPosition = mySpaceship.startingPosition;
+	
 	Core::Init("Game Demo", SCREEN_WIDTH, SCREEN_HEIGHT);
 	Core::RegisterUpdateFn(Update);
 	Core::RegisterDrawFn(Draw);
