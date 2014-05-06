@@ -4,6 +4,8 @@
 #include <sstream>
 #include "Shape.h"
 
+using std::stringstream;
+
 class Boundary
 {
 public:
