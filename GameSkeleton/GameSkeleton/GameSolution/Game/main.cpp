@@ -5,6 +5,7 @@
 using Core::Input;
 
 Spaceship mySpaceship;
+EnemySpaceship enemySpaceship;
 Boundary boundary;
 
 int SCREEN_WIDTH = 1900;
@@ -31,6 +32,7 @@ bool Update(float dt)
 	}
 
 	mySpaceship.update(dt, boundary, boudnaryTypeStuff);
+	enemySpaceship.update(dt);
 	bool isPressed = Input::IsPressed(Input::KEY_ESCAPE);
 
 	return isPressed;
@@ -39,7 +41,10 @@ bool Update(float dt)
 void Draw(Core::Graphics& graphics)
 {
 	mySpaceship.draw(graphics);
+
+
 	boundary.draw(graphics);
+	enemySpaceship.draw(graphics);
 }
 
 void main()
@@ -47,6 +52,8 @@ void main()
 	mySpaceship.startingPosition = Vector2(width/2, height/2);
 	mySpaceship.currentPosition = mySpaceship.startingPosition;
 	
+	enemySpaceship.startingPosition = Vector2(300, 100);
+
 	Core::Init("Game Demo", SCREEN_WIDTH, SCREEN_HEIGHT);
 	Core::RegisterUpdateFn(Update);
 	Core::RegisterDrawFn(Draw);

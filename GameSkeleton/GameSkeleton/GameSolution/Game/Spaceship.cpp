@@ -1,5 +1,6 @@
 #include "Spaceship.h"
 
+
 int boundaryType = 1;
 unsigned int numOfPoints2;
 
@@ -16,6 +17,22 @@ Vector2 shipShape[] =
 	Vector2(9.0f, 0.0f),
 	Vector2(3.0f, -15.0f)
 
+};
+
+Vector2 enemyShipShape[] =
+{
+	Vector2(0.0f, -10.0f),
+	Vector2(10.0f, 0.0f),
+	Vector2(0.0f, 10.0f),
+	Vector2(-10.0f, 0.0f)
+};
+
+Vector2 locationPoints[] =
+{
+	Vector2(300.0f, 100.0f),
+	Vector2(100.0f, 100.0f),
+	Vector2(300.0f, 300.0f),
+	Vector2(100.0f, 300.0f)
 };
 
 Vector2 boundaryShapeHolder[] =
@@ -40,6 +57,15 @@ Boundary::Boundary()
 	boundaryShape = Shape(&boundaryShapeHolder[0], numOfPoints2);
 }
 
+EnemySpaceship::EnemySpaceship()
+{
+	unsigned int enemyPoints = sizeof(enemyShipShape) / sizeof(*enemyShipShape);
+	enemyShape = Shape(&enemyShipShape[0], enemyPoints);
+
+	unsigned int travelPoints = sizeof(locationPoints) / sizeof(*locationPoints);
+	travelPath = Shape(&locationPoints[0], travelPoints);
+}
+
 void Boundary::draw(Core::Graphics& g)
 {
 	if(boundaryType == 3)
@@ -61,6 +87,39 @@ void Spaceship::draw(Core::Graphics& g)
 		const Vector2& first = currentPosition + spaceshipShape.shapePoints[i];
 		const Vector2& second = currentPosition + spaceshipShape.shapePoints[(i + 1) % spaceshipShape.numOfPoints];
 		g.DrawLine(first.X, first.Y, second.X, second.Y);
+	}
+}
+
+void EnemySpaceship::draw(Core::Graphics& g)
+{
+	for(unsigned int i = 0; i < enemyShape.numOfPoints; i++)
+	{
+		const Vector2& first = startingPosition + enemyShape.shapePoints[i];
+		const Vector2& second = startingPosition + enemyShape.shapePoints[(i + 1) % enemyShape.numOfPoints];
+		g.DrawLine(first.X, first.Y, second.X, second.Y);
+	}
+}
+
+int locationCounter = 0;
+float scale = 0;
+void EnemySpaceship::update(float dt)
+{
+	Vector2 lerpA = travelPath.shapePoints[locationCounter];
+	Vector2 lerpB = travelPath.shapePoints[(locationCounter + 1) % 4];
+	scale += .25f * dt * (1000/Engine::Length(lerpA, lerpB));
+
+	startingPosition = Engine::Lerp(lerpA, lerpB, scale);
+
+	if(scale >= 1)
+	{
+		locationCounter++;
+		if(locationCounter == 4)
+		{
+			locationCounter = 0;
+		}
+		scale = 0;
+		lerpA = lerpB;
+		lerpB = travelPath.shapePoints[locationCounter];
 	}
 }
 
@@ -129,4 +188,25 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			}
 		}
 	}
+}
+
+void Spaceship::DrawValue(Core::Graphics& g, int x, int y, float num)
+{
+	stringstream ss;
+	ss << "Boundary Type: " << num;
+	g.DrawString( x, y, ss.str().c_str());
+}
+
+void Spaceship::DrawValue(Core::Graphics& g, int x, int y, int num)
+{
+	stringstream ss;
+	ss << "Height of the screen: " << num;
+	g.DrawString( x, y, ss.str().c_str());
+}
+
+void Spaceship::DrawValue(Core::Graphics& g, int x, int y, Vector2 num)
+{
+	stringstream ss;
+	ss << "Ship Position: " << num.X << ", " << num.Y;
+	g.DrawString( x, y, ss.str().c_str());
 }

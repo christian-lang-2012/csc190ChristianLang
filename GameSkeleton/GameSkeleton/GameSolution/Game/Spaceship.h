@@ -1,6 +1,7 @@
 #ifndef SPACESHIP_H
 #define SPACESHIP_H
 
+#include <sstream>
 #include "Shape.h"
 
 class Boundary
@@ -23,7 +24,20 @@ public:
 	
 	void draw(Core::Graphics&);
 	void update(float dt, Boundary b, int boundaryType);
+	void DrawValue(Core::Graphics& g, int x, int y, float num);
+	void DrawValue(Core::Graphics& g, int x, int y, int num);
+	void DrawValue(Core::Graphics& g, int x, int y, Vector2 num);
 };
 
+class EnemySpaceship
+{
+public:
+	EnemySpaceship();
+	Vector2 startingPosition;
+	Shape enemyShape;
+	Shape travelPath;
+	void draw(Core::Graphics&);
+	void update(float dt);
+};
 
 #endif

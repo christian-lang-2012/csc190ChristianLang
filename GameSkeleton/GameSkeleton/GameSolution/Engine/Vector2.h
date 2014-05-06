@@ -73,6 +73,15 @@ namespace Engine{
 
 	};
 
+	inline float Length(Vector2 a, Vector2 b)
+	{
+		float xSquared = a.X * b.X;
+		float ySquared = a.Y * b.Y;
+		float underRadical = xSquared + ySquared;
+		float result = sqrt(underRadical);
+		return result;
+	}
+
 	inline Vector2 Lerp(Vector2 a, Vector2 b, float beta)
 	{
 		float lerpX = ((1-beta) * a.X) + (beta * b.X);
