@@ -37,10 +37,10 @@ Vector2 locationPoints[] =
 
 Vector2 boundaryShapeHolder[] =
 {
-	Vector2(400.0f, 0.0f),
-	Vector2(800.0f, 600.0f),
-	Vector2(400.0f, 1000.0f),
-	Vector2(0.0f, 600.0f),
+	Vector2(950.0f, 0.0f),
+	Vector2(0.0f, 500.0f),
+	Vector2(950.0f, 1000.0f),
+	Vector2(1900.0f, 500.0f),
 
 };
 
@@ -170,7 +170,7 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			velocity.Y = 0;
 		}
 	}
-	
+
 	currentPosition.X = currentPosition.X + velocity.X * dt;
 	currentPosition.Y = currentPosition.Y + velocity.Y * dt;
 
@@ -203,49 +203,50 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			Vector2 firstVertexPoint = tempBoundary.boundaryShape.shapePoints[i];
 			Vector2 secondVertexPoint = tempBoundary.boundaryShape.shapePoints[(i+1) % numOfPoints2];
 			Vector2 wallToShip = currentPosition - firstVertexPoint;
-			
-			float displacement = 43;
 
-			if(currentPosition.X > 400 && currentPosition.Y < 600)
+			float displacement = 30;
+			displacement;
+
+			if(currentPosition.X > 950 && currentPosition.Y < 500)
 			{
 				wallToShip.X += displacement;
 				wallToShip.Y -= displacement;
 			}
-			if(currentPosition.X < 400 && currentPosition.Y < 600)
+			if(currentPosition.X < 950 && currentPosition.Y < 500)
 			{
 				wallToShip.X -= displacement;
 				wallToShip.Y -= displacement;
 			}
-			if(currentPosition.X > 400 && currentPosition.Y > 600)
+			if(currentPosition.X > 950 && currentPosition.Y > 500)
 			{
 				wallToShip.X += displacement;
 				wallToShip.Y += displacement;
 			}
-			if(currentPosition.X < 400 && currentPosition.Y > 600)
+			if(currentPosition.X < 950 && currentPosition.Y > 500)
 			{
 				wallToShip.X -= displacement;
 				wallToShip.Y += displacement;
 			}
 
-			
+
 			Vector2 wall = secondVertexPoint - firstVertexPoint;
 			Vector2 normalizedWall = wall.PerpCCW().Normalized();
 
 			float dotProduct = Engine::Dot(wallToShip, normalizedWall);
-			if(dotProduct <= 0)
+			if(dotProduct >= 0 && dotProduct < 85)
 			{
 				velocity = velocity + (normalizedWall * (dotProduct * -2));
 			}
-		}
 
-		if(currentPosition.X < 0)
-			velocity.X *= -1;
-		if(currentPosition.X > 1900)
-			velocity.X *= -1;
-		if(currentPosition.Y < 0)
-			velocity.Y *= -1;
-		if(currentPosition.Y > 1000)
-			velocity.Y *= -1;
+			if(currentPosition.X < 0)
+				velocity.X *= -1;
+			if(currentPosition.X > 1900)
+				velocity.X *= -1;
+			if(currentPosition.Y < 0)
+				velocity.Y *= -1;
+			if(currentPosition.Y > 1000)
+				velocity.Y *= -1;
+		}
 	}
 }
 
