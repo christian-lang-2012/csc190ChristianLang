@@ -74,8 +74,8 @@ void myLerpDataCallback(const LerpData& data)
 Vector2 basicMatrixMultiplyResultVector;
 void myLinearTransformationCallback(const LinearTransformationData& data)
 {
-	Vector2 col1(data.m01, data.m11);
-	Vector2 col2(data.m00, data.m10);
+	Vector2 col1(data.m00, data.m01);
+	Vector2 col2(data.m10, data.m11);
 	Vector2 vect(data.v0, data.v1);
 	basicMatrixMultiplyResultVector = Matrix2(col1, col2) * vect;
 }
