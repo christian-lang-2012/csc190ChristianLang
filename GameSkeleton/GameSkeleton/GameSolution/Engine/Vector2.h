@@ -73,6 +73,15 @@ namespace Engine{
 
 	};
 
+	struct Vector3
+	{
+		float X, Y, Z;
+		explicit Vector3(float x = 0.0f, float y = 0.0f, float z = 0.0f): X(x), Y(y), Z(z)
+		{
+
+		}
+	};
+
 	inline float Length(Vector2 a, Vector2 b)
 	{
 		float xSquared = a.X * b.X;

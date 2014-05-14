@@ -1,9 +1,9 @@
-﻿Build started 5/5/2014 9:03:26 PM.
+﻿Build started 5/13/2014 8:26:05 PM.
      1>Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Engine\Engine.vcxproj" on node 2 (Build target(s)).
      1>Link:
-         Engine.vcxproj -> C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Engine.dll
+         Engine.vcxproj -> C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\TwoDCalculator\Debug\Engine.dll
      1>Done Building Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Engine\Engine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.06
+Time Elapsed 00:00:00.11

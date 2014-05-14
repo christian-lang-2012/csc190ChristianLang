@@ -205,7 +205,6 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			Vector2 wallToShip = currentPosition - firstVertexPoint;
 
 			float displacement = 30;
-			displacement;
 
 			if(currentPosition.X > 950 && currentPosition.Y < 500)
 			{
@@ -233,7 +232,7 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			Vector2 normalizedWall = wall.PerpCCW().Normalized();
 
 			float dotProduct = Engine::Dot(wallToShip, normalizedWall);
-			if(dotProduct >= 0 && dotProduct < 85)
+			if(dotProduct >= 0 && dotProduct < 45)
 			{
 				velocity = velocity + (normalizedWall * (dotProduct * -2));
 			}
