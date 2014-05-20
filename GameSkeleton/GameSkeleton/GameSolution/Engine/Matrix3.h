@@ -115,13 +115,20 @@ namespace Engine
 
 	}
 
-	inline Vector3 operator*(Matrix3 m1, Vector3 v1)
+	inline Vector2 operator*(Matrix3 m1, Vector2 v1)
 	{
-		float newX, newY, newZ;
+		float newX, newY;
 		newX = (m1.x1 * v1.X) + (m1.x2 * v1.Y) + m1.x3;
 		newY = (m1.y1 * v1.X) + (m1.y2 * v1.Y) + m1.y3;
-		newZ = 1;
-		return Vector3(newX, newY, newZ);
+		return Vector2(newX, newY);
+	}
+
+	inline Vector3 operator*(Matrix3 m1, Vector3 v1)
+	{
+		float newX, newY;
+		newX = (m1.x1 * v1.X) + (m1.x2 * v1.Y) + m1.x3;
+		newY = (m1.y1 * v1.X) + (m1.y2 * v1.Y) + m1.y3;
+		return Vector3(newX, newY, 1.0f);
 	}
 }
 

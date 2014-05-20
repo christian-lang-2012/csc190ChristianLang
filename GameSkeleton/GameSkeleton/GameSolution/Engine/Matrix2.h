@@ -32,12 +32,12 @@ public:
 	friend inline Matrix2 operator*(Matrix2 m1, Matrix2 m2);
 	friend inline Vector2 operator*(Matrix2 m1, Vector2 v1);
 
-	inline Matrix2 Rotation(Matrix2 m1, float angle)
+	inline Matrix2 Rotation(float angle)
 	{
 		Vector2 first(cosf(angle), sinf(angle));
 		Vector2 second(-sinf(angle), cosf(angle));
 		Matrix2 rotation(first, second);
-		return m1 * rotation;
+		return rotation;
 	}
 
 	inline Matrix2 Scale(Matrix2 m1, float scale)
