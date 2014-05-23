@@ -96,6 +96,7 @@ void Draw(Core::Graphics& graphics)
 	mySpaceship.DrawValue(graphics, 1300, 150, boudnaryTypeStuff);
 	mySpaceship.DrawValue(graphics, 1300, 170, height);
 	mySpaceship.DrawValue(graphics, 1300, 190, mySpaceship.currentPosition);
+	mySpaceship.DrawVelocity(graphics, 1300, 250);
 	mySpaceship.DrawValue(graphics, 1300, 300, mySpaceship.transformationMatrix);
 
 	boundary.draw(graphics);

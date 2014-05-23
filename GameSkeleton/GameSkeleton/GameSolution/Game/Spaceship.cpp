@@ -52,7 +52,7 @@ Spaceship::Spaceship()
 	unsigned int numPoints1 = sizeof(shipShape) / sizeof(*shipShape);
 	spaceshipShape = Shape(&shipShape[0], numPoints1);
 	rotationMatrixConstant = .2f;
-	acceleration = 50.0f;
+	acceleration = Vector2(0.0f, 0.0f);
 }
 
 void Spaceship::draw(Core::Graphics& g)
@@ -70,12 +70,13 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 	Boundary tempBoundary = b;
 
 	boundaryType = boundaryTypeCtor;
-
+	acceleration = Vector2();
 	if(Core::Input::IsPressed(Core::Input::KEY_RIGHT) || Core::Input::IsPressed('D'))
 	{
+		rotationMatrixConstant += .1f;
 		transformationMatrix = transformationMatrix.Rotation(rotationMatrixConstant);
 		turret.transformationMatrix = transformationMatrix;
-		rotationMatrixConstant += .1f;
+		
 	}
 	else if(Core::Input::IsPressed(Core::Input::KEY_LEFT) || Core::Input::IsPressed('A'))
 	{
@@ -85,14 +86,16 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 	}
 	else if(Core::Input::IsPressed(Core::Input::KEY_UP) || Core::Input::IsPressed('W'))
 	{
-		acceleration += 100.0f;
+		acceleration.Y = -1.0f;
 	}
 	else if(Core::Input::IsPressed(Core::Input::KEY_DOWN) || Core::Input::IsPressed('S'))
 	{
-		acceleration -= 100.0f;
+		acceleration.Y = 1.0f;
 	}
 
-	velocity = Vector2(sin(rotationMatrixConstant), -cos(rotationMatrixConstant)) * dt * acceleration;
+	acceleration = transformationMatrix * acceleration;
+
+	velocity = velocity + acceleration;
 	currentPosition.X = currentPosition.X + velocity.X * dt;
 	currentPosition.Y = currentPosition.Y + velocity.Y * dt;
 
@@ -170,7 +173,8 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			Vector2 normalizedWall = wall.PerpCCW().Normalized();
 
 			float dotProduct = Engine::Dot(wallToShip, normalizedWall);
-			if(dotProduct >= 0 && dotProduct < 45)
+
+			if(dotProduct >= 0 && dotProduct < 85)
 			{
 				velocity = velocity + (normalizedWall * (dotProduct * -2));
 			}
@@ -185,6 +189,13 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 				velocity.Y *= -1;
 		}
 	}
+}
+
+void Spaceship::DrawVelocity(Core::Graphics& g, int x, int y)
+{
+	stringstream ss;
+	ss << "Velocity: " << velocity.X << ", " << velocity.Y;
+	g.DrawString( x, y, ss.str().c_str());
 }
 
 void Spaceship::DrawValue(Core::Graphics& g, int x, int y, float num)

@@ -29,7 +29,7 @@ public:
 	Vector2 currentPosition;
 	Vector2 velocity;
 	Turret turret;
-	float acceleration;
+	Vector2 acceleration;
 	
 	float rotationMatrixConstant;
 	
@@ -39,6 +39,7 @@ public:
 	void DrawValue(Core::Graphics& g, int x, int y, int num);
 	void DrawValue(Core::Graphics& g, int x, int y, Vector2 num);
 	void DrawValue(Core::Graphics& g, int x, int y, Matrix3 matrix);
+	void DrawVelocity(Core::Graphics& g, int x, int y);
 	
 };
 
