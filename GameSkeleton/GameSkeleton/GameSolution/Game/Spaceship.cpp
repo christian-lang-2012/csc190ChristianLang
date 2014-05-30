@@ -65,7 +65,7 @@ void Spaceship::draw(Core::Graphics& g)
 	}
 }
 
-void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
+bool Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 {
 	Boundary tempBoundary = b;
 
@@ -129,13 +129,25 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 	if(boundaryType == 2)
 	{
 		if(currentPosition.X < 0)
+		{
 			velocity.X *= -1;
+			return true;
+		}
 		if(currentPosition.X > 1900)
+		{
 			velocity.X *= -1;
+			return true;
+		}
 		if(currentPosition.Y < 0)
+		{
 			velocity.Y *= -1;
+			return true;
+		}
 		if(currentPosition.Y > 1000)
+		{
 			velocity.Y *= -1;
+			return true;
+		}
 	}
 	if(boundaryType == 3)
 	{
@@ -177,6 +189,7 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 			if(dotProduct >= 0 && dotProduct < 85)
 			{
 				velocity = velocity + (normalizedWall * (dotProduct * -2));
+				return true;
 			}
 
 			if(currentPosition.X < 0)
@@ -189,6 +202,8 @@ void Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 				velocity.Y *= -1;
 		}
 	}
+	
+	return false;
 }
 
 void Spaceship::DrawVelocity(Core::Graphics& g, int x, int y)

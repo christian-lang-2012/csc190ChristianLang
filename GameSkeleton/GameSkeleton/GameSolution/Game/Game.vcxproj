@@ -86,17 +86,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BubbleEffect.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="ColorChangeType.cpp" />
     <ClCompile Include="EnemySpaceship.cpp" />
+    <ClCompile Include="ExplosionEffect.cpp" />
+    <ClCompile Include="GameInitializer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleEffect.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="RecursiveShape.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Spaceship.cpp" />
     <ClCompile Include="Turret.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BubbleEffect.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="ColorChangeType.h" />
     <ClInclude Include="EnemySpaceship.h" />
+    <ClInclude Include="ExplosionEffect.h" />
+    <ClInclude Include="GameInitializer.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEffect.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Randomizer.h" />
     <ClInclude Include="RecursiveShape.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Spaceship.h" />

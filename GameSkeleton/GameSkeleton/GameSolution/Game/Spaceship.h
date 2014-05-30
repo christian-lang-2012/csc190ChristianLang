@@ -34,7 +34,7 @@ public:
 	float rotationMatrixConstant;
 	
 	void draw(Core::Graphics&);
-	void update(float dt, Boundary b, int boundaryType);
+	bool update(float dt, Boundary b, int boundaryType);
 	void DrawValue(Core::Graphics& g, int x, int y, float num);
 	void DrawValue(Core::Graphics& g, int x, int y, int num);
 	void DrawValue(Core::Graphics& g, int x, int y, Vector2 num);
