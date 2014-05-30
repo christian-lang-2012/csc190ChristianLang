@@ -42,7 +42,7 @@ bool GameInitializer::Update(float dt)
 
 	if(isCollision)
 	{
-		ParticleEffect* explosion =new ExplosionEffect(0.30f, 0.02f, ColorChangeType::FIRE, mySpaceship.currentPosition, 1.0f, 10.0f, 3000);
+		ParticleEffect* explosion =new ExplosionEffect(0.30f, 0.02f, ColorChangeType::FIRE, mySpaceship.currentPosition, 1.0f, 10.0f, 1000);
 		system.AddEffect(explosion);
 	}
 	

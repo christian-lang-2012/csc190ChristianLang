@@ -9,6 +9,7 @@ void ExplosionEffect ::draw(Core::Graphics& g)
 				float x = particles[i].position.X;
 				float y = particles[i].position.Y;
 				g.DrawLine(x, y, (x + 3), y);
+				g.SetColor(RGB(255,255,255));
 			}
 		}
 }

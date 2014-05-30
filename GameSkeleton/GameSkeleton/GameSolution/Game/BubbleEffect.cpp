@@ -22,6 +22,7 @@ void BubbleEffect::draw(Core::Graphics& g)
 		if (particles[i].isAlive()){
 			g.SetColor(particles[i].currentColor);
 			Draw_MidpointCircle(g, particles[i].radius, particles[i].position);
+			g.SetColor(RGB(255,255,255));
 		}
 	}
 }

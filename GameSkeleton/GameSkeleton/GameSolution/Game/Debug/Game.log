@@ -1,4 +1,4 @@
-﻿Build started 5/29/2014 10:28:27 PM.
+﻿Build started 5/30/2014 9:41:40 AM.
      1>Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Game\Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Engine" /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Core\include" /ZI /nologo /W4 /WX /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GameInitializer.cpp
@@ -24,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.27
+Time Elapsed 00:00:01.23
