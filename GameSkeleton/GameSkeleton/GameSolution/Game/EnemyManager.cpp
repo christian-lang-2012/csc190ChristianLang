@@ -28,15 +28,25 @@ void EnemyManager::RemoveEnemy(Enemy* enemy)
 	}
 }
 
-void EnemyManager::update(float dt, Vector2& playerShipPosition)
+void EnemyManager::update(float dt, Spaceship& playerShip, ParticleSystem& system, int& killCount)
 {
 	vector<Enemy*> deletedEnemies;
 
 	for(vector<Enemy*>::iterator iter = enemies.begin(); iter != enemies.end(); iter++){
 		Enemy* nextEnemy = *iter;
-		bool isAlive = nextEnemy->update(dt, playerShipPosition);
+		bool isAlive = nextEnemy->update(dt, playerShip.currentPosition);
+
+		Vector2 d = playerShip.currentPosition - nextEnemy->getPosition();
+		float length = d.Length();
+		if(length <= 40)
+		{
+			playerShip.health--;
+		}
 
 		if (!isAlive){
+			ParticleEffect* explosion = new ExplosionEffect(0.10f, 0.01f, ColorChangeType::EXPLOSION, nextEnemy->getPosition(), 1.0f, 10.0f, 100);
+			system.AddEffect(explosion);
+			killCount++;
 			deletedEnemies.push_back(nextEnemy);
 		}
 	}
@@ -55,7 +65,7 @@ void EnemyManager::draw(Core::Graphics& graphics)
 	}
 }
 
-void EnemyManager::checkIfShipIsHit(Vector2& bulletPosition, ParticleSystem& system)
+void EnemyManager::checkIfShipIsHit(Vector2& bulletPosition, ParticleSystem& system, int& killCount)
 {
 	for(vector<Enemy*>::iterator iter = enemies.begin(); iter != enemies.end(); iter++){
 		Enemy* nextEnemy = *iter;
@@ -67,8 +77,9 @@ void EnemyManager::checkIfShipIsHit(Vector2& bulletPosition, ParticleSystem& sys
 		if(length <= 12)
 		{
 			nextEnemy->health--;
-			ParticleEffect* explosion = new ExplosionEffect(0.10f, 0.01f, ColorChangeType::FIRE, shipPosition, 1.0f, 10.0f, 100);
+			ParticleEffect* explosion = new ExplosionEffect(0.10f, 0.01f, ColorChangeType::EXPLOSION, shipPosition, 1.0f, 10.0f, 100);
 			system.AddEffect(explosion);
+			killCount++;
 		}
 	}
 

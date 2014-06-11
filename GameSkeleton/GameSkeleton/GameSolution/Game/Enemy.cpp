@@ -26,7 +26,7 @@ bool Enemy::update(float dt, Vector2& playerShipPosition)
 	if(playerShipPosition.X != position. X && playerShipPosition.Y != position.Y)
 	{
 		Vector2 lerpB = playerShipPosition;
-		scale += .01f * dt * (1000/Engine::Length(lerpA, lerpB));
+		scale += .10f * dt * (1000/Engine::Length(lerpA, lerpB));
 
 		position = Engine::Lerp(lerpA, lerpB, scale);
 

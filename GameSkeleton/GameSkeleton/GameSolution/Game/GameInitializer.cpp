@@ -8,10 +8,13 @@ GameInitializer::GameInitializer(void)
 	SCREEN_HEIGHT = 1000;
 	width = 1900;
 	height = 1000;
-	boudnaryTypeStuff = 1;
+	boudnaryTypeStuff = 2;
 	bulletCounter = 0;
 	isPress = false;
 	constTimer = 0;
+	startTimer = 0;
+	deathTimer = 0;
+	killCounter = 0;
 
 	profiler.AddCategory("Ship Collision Detection");
 	profiler.AddCategory("Recursive Update");
@@ -27,8 +30,13 @@ GameInitializer::~GameInitializer(void)
 {
 }
 
+bool GameInitializer::UpdateIntro(float dt)
+{
+	startTimer += dt;
+	return false;
+}
 
-bool GameInitializer::Update(float dt)
+bool GameInitializer::UpdateInGame(float dt)
 {
 	fps = 1/dt;
 	spf = dt;
@@ -58,7 +66,7 @@ bool GameInitializer::Update(float dt)
 
 	if(isCollision)
 	{
-		ParticleEffect* explosion =new ExplosionEffect(0.30f, 0.02f, ColorChangeType::BUBBLE, mySpaceship.currentPosition, 1.0f, 10.0f, 500);
+		ParticleEffect* explosion =new ExplosionEffect(0.30f, 0.02f, ColorChangeType::BUBBLE, mySpaceship.currentPosition, 1.0f, 10.0f, 300);
 		system.AddEffect(explosion);
 	}
 
@@ -107,13 +115,13 @@ bool GameInitializer::Update(float dt)
 	{
 		for(int i = 0; i < 100; i++)
 		{
-			enemySystem.checkIfShipIsHit(globalBullets[i].position, system);
+			enemySystem.checkIfShipIsHit(globalBullets[i].position, system, killCounter);
 		}
 	}
 
 	{
 		PROFILE("Enemyships Update");
-		enemySystem.update(dt, mySpaceship.currentPosition);
+		enemySystem.update(dt, mySpaceship, system, killCounter);
 	}
 
 	{
@@ -137,29 +145,62 @@ bool GameInitializer::Update(float dt)
 
 }
 
-void GameInitializer::Draw(Core::Graphics& graphics)
+bool GameInitializer::UpdateDeath(float dt)
 {
-	graphics.DrawString(1300, 10, "Use UP or W to move the ship forward.");
-	graphics.DrawString(1300, 25, "Use A, D, LEFT, or RIGHT to rotate the ship."); 
-	graphics.DrawString(1300, 40, "Use S or DOWN to move the ship backwards.");
-	graphics.DrawString(1300, 55 , "Press These Buttons for Different Boundary Types:");
-	graphics.DrawString(1300, 70, "1: Wrap");
-	graphics.DrawString(1300, 85, "2: Bounce");
-	graphics.DrawString(1300, 100, "3: Boundaries");
-	graphics.DrawString(1500, 150, "FPS:");
-	graphics.DrawString(1500, 165, "SPF:");
-	Debug::Drawvalue(graphics, 1550, 165, spf);
-	Debug::Drawvalue(graphics, 1550, 150, Debug::Debug_RoundValue(fps));
+	deathTimer += dt;
+	return false;
+}
+
+bool GameInitializer::Update(float dt)
+{
+	bool con;
+	if(startTimer < 10)
+	{
+		con = UpdateIntro(dt);
+	}
+	else if(mySpaceship.health > 0)
+	{
+		con = UpdateInGame(dt);
+	}
+	else
+	{
+		con = UpdateDeath(dt);
+	}
+	return con;
+}
+
+void GameInitializer::DrawIntro(Core::Graphics& graphics)
+{
+	graphics.DrawString(800, 400, "You have 15 health, last as long as you can");
+	graphics.DrawString(800, 500, "Use UP or W to move the ship forward.");
+	graphics.DrawString(800, 550, "Use A, D, LEFT, or RIGHT to rotate the ship."); 
+	graphics.DrawString(800, 600, "Use S or DOWN to move the ship backwards.");
+	graphics.DrawString(800, 650 , "Press These Buttons for Different Boundary Types:");
+	graphics.DrawString(800, 700, "1: Wrap");
+	graphics.DrawString(800, 750, "2: Bounce");
+	graphics.DrawString(800, 800, "3: Boundaries");
+}
+
+void GameInitializer::DrawInGame(Core::Graphics& graphics)
+{
+	graphics.DrawString(1500, 90, "Health:");
+	graphics.DrawString(1500, 100, "FPS:");
+	graphics.DrawString(1500, 120, "SPF:");
+	graphics.DrawString(1500, 140, "Kill Count:");
+	Debug::Drawvalue(graphics, 1550, 90, mySpaceship.health);
+	Debug::Drawvalue(graphics, 1600, 140, killCounter);
+	Debug::Drawvalue(graphics, 1550, 100, spf);
+	Debug::Drawvalue(graphics, 1550, 120, Debug::Debug_RoundValue(fps));
 
 
 	mySpaceship.draw(graphics);
 	mySpaceship.turret.draw(graphics);
 
 	mySpaceship.DrawValue(graphics, 1300, 150, boudnaryTypeStuff);
-	mySpaceship.DrawValue(graphics, 1300, 170, height);
-	mySpaceship.DrawValue(graphics, 1300, 190, mySpaceship.currentPosition);
-	mySpaceship.DrawVelocity(graphics, 1300, 250);
-	mySpaceship.DrawValue(graphics, 1300, 300, mySpaceship.transformationMatrix);
+	//mySpaceship.DrawValue(graphics, 1300, 170, height);
+	//mySpaceship.DrawValue(graphics, 1300, 190, mySpaceship.currentPosition);
+	//mySpaceship.DrawVelocity(graphics, 1300, 250);
+	//mySpaceship.DrawValue(graphics, 1300, 300, mySpaceship.transformationMatrix);
 
 	boundary.draw(graphics);
 	enemySpaceship.draw(graphics);
@@ -182,14 +223,35 @@ void GameInitializer::Draw(Core::Graphics& graphics)
 	}
 }
 
+void GameInitializer::DrawDeath(Core::Graphics& graphics)
+{
+	graphics.DrawString(900, 500, "You have died. The game will close soon.");
+}
+
+void GameInitializer::Draw(Core::Graphics& graphics)
+{
+	if(startTimer < 10)
+	{
+		DrawIntro(graphics);
+	}
+	else if (mySpaceship.health > 0)
+	{
+		DrawInGame(graphics);
+	}
+	else
+	{
+		DrawDeath(graphics);
+	}
+}
+
 void GameInitializer::Init()
 {
-
+	ASSERT(1 == 2, "UNCOMMENT THIS TO MAKE IT RUN!");
 	mySpaceship.startingPosition = Vector2(width/2, height/2);
 	mySpaceship.currentPosition = mySpaceship.startingPosition;
 
 	BubbleEffect* bubbles = new BubbleEffect(0.01f, 0.01f, ColorChangeType::FIRE, 
-		Vector2(110, 110), 0.01f, 0.01f, 3.0f, 6.0f, 0.5f, 2.5f, 60);
+		Vector2(110, 110), 0.01f, 0.01f, 3.0f, 6.0f, 0.5f, 2.5f, 30);
 	system.AddEffect(bubbles);
 
 	enemySpaceship.startingPosition = Vector2(300, 100);

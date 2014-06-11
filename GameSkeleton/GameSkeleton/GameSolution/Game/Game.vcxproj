@@ -94,7 +94,6 @@
     <ClCompile Include="EnemySpaceship.cpp" />
     <ClCompile Include="ExplosionEffect.cpp" />
     <ClCompile Include="GameInitializer.cpp" />
-    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEffect.cpp" />
@@ -114,7 +113,6 @@
     <ClInclude Include="EnemySpaceship.h" />
     <ClInclude Include="ExplosionEffect.h" />
     <ClInclude Include="GameInitializer.h" />
-    <ClInclude Include="Logger.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEffect.h" />
     <ClInclude Include="ParticleSystem.h" />

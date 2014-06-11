@@ -2,6 +2,7 @@
 #define ENEMY_MANAGER_H
 
 #include "Shape.h"
+#include "Spaceship.h"
 #include "Enemy.h"
 #include "ParticleSystem.h"
 #include "ExplosionEffect.h"
@@ -19,8 +20,8 @@ public:
 
 	void RemoveEnemy(Enemy* enemy);
 
-	void update(float dt, Vector2& playerShipPosition);
-	void checkIfShipIsHit(Vector2& bulletPosition, ParticleSystem& system);
+	void update(float dt, Spaceship& playerShipPosition, ParticleSystem& system, int& killCount);
+	void checkIfShipIsHit(Vector2& bulletPosition, ParticleSystem& system, int& killCount);
 	void draw(Core::Graphics& graphics);
 };
 

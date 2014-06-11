@@ -1,4 +1,4 @@
-﻿Build started 6/10/2014 6:42:53 PM.
+﻿Build started 6/10/2014 9:48:23 PM.
      1>Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Game\Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Engine" /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Core\include" /ZI /nologo /W4 /WX /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D PROFILING_ENABLED /D LOG_ON /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt EnemyManager.cpp
@@ -12,7 +12,6 @@
          Debug\EnemySpaceship.obj
          Debug\ExplosionEffect.obj
          Debug\GameInitializer.obj
-         Debug\Logger.obj
          Debug\main.obj
          Debug\Particle.obj
          Debug\ParticleEffect.obj
@@ -22,10 +21,9 @@
          Debug\Shape.obj
          Debug\Spaceship.obj
          Debug\Turret.obj
-            Creating library C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.lib and object C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.exp
          Game.vcxproj -> C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.exe
      1>Done Building Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Game\Game.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.24
+Time Elapsed 00:00:01.35

@@ -53,6 +53,7 @@ Spaceship::Spaceship()
 	spaceshipShape = Shape(&shipShape[0], numPoints1);
 	rotationMatrixConstant = .2f;
 	acceleration = Vector2(0.0f, 0.0f);
+	health = 15;
 }
 
 void Spaceship::draw(Core::Graphics& g)

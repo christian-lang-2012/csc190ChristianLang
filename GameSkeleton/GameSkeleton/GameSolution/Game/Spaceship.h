@@ -30,6 +30,7 @@ public:
 	Vector2 velocity;
 	Turret turret;
 	Vector2 acceleration;
+	int health;
 	
 	float rotationMatrixConstant;
 	

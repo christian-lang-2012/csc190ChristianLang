@@ -24,7 +24,8 @@ public:
 	EnemyManager enemySystem;
 	Randomizer rando;
 	float fps, spf;
-	float constTimer;
+	float constTimer, startTimer, deathTimer;
+	int killCounter;
 
 	Bullet globalBullets[100];
 
@@ -41,7 +42,13 @@ public:
 	GameInitializer(void);
 	~GameInitializer(void);
 	bool Update(float dt);
+	bool UpdateIntro(float dt);
+	bool UpdateInGame(float dt);
+	bool UpdateDeath(float dt);
 	void Draw(Core::Graphics& graphics);
+	void DrawIntro(Core::Graphics& graphics);
+	void DrawInGame(Core::Graphics& graphics);
+	void DrawDeath(Core::Graphics& graphics);
 	void Init();
 
 };
