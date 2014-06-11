@@ -8,6 +8,9 @@
 #include "Core.h"
 #include "EnemySpaceship.h"
 #include "RecursiveShape.h"
+#include "EnemyManager.h"
+#include "Logger.h"
+#include "Timer.h"
 
 using Core::Input;
 
@@ -18,6 +21,10 @@ public:
 	EnemySpaceship enemySpaceship;
 	Boundary boundary;
 	ParticleSystem system;
+	EnemyManager enemySystem;
+	Randomizer rando;
+	float fps, spf;
+	float constTimer;
 
 	Bullet globalBullets[100];
 

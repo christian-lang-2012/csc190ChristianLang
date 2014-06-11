@@ -2,6 +2,7 @@
 #define PARTICLE_SYSTEM_H
 
 #include "ParticleEffect.h"
+#include "Logger.h"
 #include <vector>
 
 using std::vector;

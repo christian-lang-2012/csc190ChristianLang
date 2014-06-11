@@ -18,6 +18,7 @@ Particle::Particle(Vector2 pos, Vector2 vel, float life, ColorChangeType type)
 
 void Particle::update(float dt)
 {
+	LOG(Info, "Particle update");
 	age += dt;
 }
 

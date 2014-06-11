@@ -3,6 +3,7 @@
 #include "Vector2.h"
 #include "Core.h"
 #include "ColorChangeType.h"
+#include "Logger.h"
 
 using Core::RGB;
 using Engine::Vector2;

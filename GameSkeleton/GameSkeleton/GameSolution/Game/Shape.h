@@ -3,6 +3,7 @@
 
 #include "Core.h"
 #include "Vector2.h"
+#include "Logger.h"
 using Engine::Vector2;
 
 class Shape

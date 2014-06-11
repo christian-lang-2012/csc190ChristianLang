@@ -51,7 +51,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;PROFILING_ENABLED;LOG_ON;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)\Engine;$(SolutionDir)\Core\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -89,9 +89,12 @@
     <ClCompile Include="BubbleEffect.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ColorChangeType.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EnemySpaceship.cpp" />
     <ClCompile Include="ExplosionEffect.cpp" />
     <ClCompile Include="GameInitializer.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEffect.cpp" />
@@ -106,9 +109,12 @@
     <ClInclude Include="BubbleEffect.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="ColorChangeType.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemySpaceship.h" />
     <ClInclude Include="ExplosionEffect.h" />
     <ClInclude Include="GameInitializer.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEffect.h" />
     <ClInclude Include="ParticleSystem.h" />

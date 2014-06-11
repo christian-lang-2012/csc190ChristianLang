@@ -27,6 +27,7 @@ void ParticleSystem::RemoveEffect(ParticleEffect* effect){
 }
 
 void ParticleSystem::Update(bool isThrusting, float angle, Vector2 pos, float dt){
+	LOG(Info, "Updating particle system");
 	vector<ParticleEffect*> deletedEffects;
 
 	for(vector<ParticleEffect*>::iterator iter = particleEffects.begin(); 

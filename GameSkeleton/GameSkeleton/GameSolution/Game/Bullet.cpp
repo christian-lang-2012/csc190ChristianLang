@@ -11,6 +11,8 @@ Vector2 bulletPoints[] =
 
 Bullet::Bullet()
 {
+	position.X = 0;
+	position.Y = 0;
 	acceleration = 700.0f;
 	unsigned int numOfPoints = sizeof(bulletPoints) / sizeof(*bulletPoints);
 	bulletShape = Shape(&bulletPoints[0], numOfPoints);

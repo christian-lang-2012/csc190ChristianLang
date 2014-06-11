@@ -67,6 +67,7 @@ void Spaceship::draw(Core::Graphics& g)
 
 bool Spaceship::update(float dt, Boundary b, int boundaryTypeCtor = 1)
 {
+	LOG(Info, "Updating ships place");
 	Boundary tempBoundary = b;
 
 	boundaryType = boundaryTypeCtor;
