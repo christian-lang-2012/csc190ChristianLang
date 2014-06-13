@@ -34,9 +34,6 @@
     <ClCompile Include="BubbleEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ColorChangeType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,22 +51,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BubbleEffect.h">
+      <Filter>Header</Filter>
+    </ClInclude>
     <ClInclude Include="Bullet.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorChangeType.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugMemory.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="EnemySpaceship.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Spaceship.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Turret.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="RecursiveShape.h">
+    <ClInclude Include="ExplosionEffect.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="GameInitializer.h">
@@ -81,25 +84,22 @@
     <ClInclude Include="ParticleEffect.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="BubbleEffect.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorChangeType.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystem.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="ExplosionEffect.h">
+    <ClInclude Include="RecursiveShape.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyManager.h">
+    <ClInclude Include="Shape.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="Spaceship.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Turret.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,10 @@
 #ifndef ENEMY_MANAGER_H
 #define ENEMY_MANAGER_H
 
-#include "Shape.h"
 #include "Spaceship.h"
 #include "Enemy.h"
-#include "ParticleSystem.h"
 #include "ExplosionEffect.h"
+#include "ParticleSystem.h"
 #include <vector>
 
 using std::vector;

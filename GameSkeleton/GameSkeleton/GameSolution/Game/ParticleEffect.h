@@ -2,6 +2,7 @@
 #define PARTICLE_EFFECT_H
 
 #include "Particle.h"
+#include "Randomizer.h"
 
 class ParticleEffect
 {

@@ -1,20 +1,17 @@
 #ifndef TURRET_H
 #define TURRET_H
 
-#include "Matrix3.h"
-#include "Shape.h"
 #include "Bullet.h"
-
-using Engine::Matrix3;
 
 class Turret
 {
 public:
-	Matrix3 transformationMatrix;
-	Matrix3 barrelTransform;
 	Shape barrelShape;
 	Shape baseShape;
+	Matrix3 transformationMatrix;
+	Matrix3 barrelTransform;
 	Vector2 position;
+	
 	Turret();
 	Turret(Vector2 currentPosition);
 

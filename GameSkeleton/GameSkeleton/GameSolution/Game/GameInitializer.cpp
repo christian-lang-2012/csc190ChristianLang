@@ -166,6 +166,7 @@ bool GameInitializer::Update(float dt)
 	{
 		con = UpdateDeath(dt);
 	}
+
 	return con;
 }
 
@@ -230,6 +231,8 @@ void GameInitializer::DrawDeath(Core::Graphics& graphics)
 
 void GameInitializer::Draw(Core::Graphics& graphics)
 {
+	Debug::DrawDebugStuff(graphics);
+
 	if(startTimer < 10)
 	{
 		DrawIntro(graphics);
@@ -246,7 +249,11 @@ void GameInitializer::Draw(Core::Graphics& graphics)
 
 void GameInitializer::Init()
 {
-	ASSERT(1 == 2, "UNCOMMENT THIS TO MAKE IT RUN!");
+	//char* a = new char[500];
+ //   a[-1] = 0;
+
+
+	//ASSERT(1 == 2, "COMMENT THIS TO MAKE IT RUN!");
 	mySpaceship.startingPosition = Vector2(width/2, height/2);
 	mySpaceship.currentPosition = mySpaceship.startingPosition;
 
@@ -258,4 +265,3 @@ void GameInitializer::Init()
 
 	Core::Init("Lang Game", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
-

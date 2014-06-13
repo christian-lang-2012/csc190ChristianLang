@@ -3,14 +3,14 @@
 
 #include "Shape.h"
 
-
 class EnemySpaceship
 {
 public:
-	EnemySpaceship();
-	Vector2 startingPosition;
 	Shape enemyShape;
 	Shape travelPath;
+	Vector2 startingPosition;
+	
+	EnemySpaceship();
 	void draw(Core::Graphics&);
 	void update(float dt);
 };

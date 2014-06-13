@@ -8,6 +8,7 @@ void ParticleSystem::AddEffect(ParticleEffect* effect){
 void ParticleSystem::RemoveEffect(int index){
 	vector<ParticleEffect*>::iterator removedEff = particleEffects.begin() + index;
 	particleEffects.erase(removedEff);
+	delete &removedEff;
 }
 
 void ParticleSystem::RemoveEffect(ParticleEffect* effect){
@@ -30,28 +31,26 @@ void ParticleSystem::Update(bool isThrusting, float angle, Vector2 pos, float dt
 	LOG(Info, "Updating particle system");
 	vector<ParticleEffect*> deletedEffects;
 
-	for(vector<ParticleEffect*>::iterator iter = particleEffects.begin(); 
-		iter != particleEffects.end(); iter++){
-			ParticleEffect* nextEffect = *iter;
-			UpdateColors(nextEffect->colorChange, nextEffect->particles, nextEffect->numOfParticles);
-			bool isAlive = nextEffect->update(isThrusting, angle, pos, dt);
+	for(vector<ParticleEffect*>::iterator iter = particleEffects.begin(); iter != particleEffects.end(); iter++){
+		ParticleEffect* nextEffect = *iter;
+		UpdateColors(nextEffect->colorChange, nextEffect->particles, nextEffect->numOfParticles);
+		bool isAlive = nextEffect->update(isThrusting, angle, pos, dt);
 
-			if (!isAlive){
-				deletedEffects.push_back(nextEffect);
-			}
+		if (!isAlive){
+			deletedEffects.push_back(nextEffect);
+		}
 	}
 
-	for(vector<ParticleEffect*>::iterator iter = deletedEffects.begin(); 
-		iter != deletedEffects.end(); iter++){
-			ParticleEffect* nextEffect = *iter;
-			RemoveEffect(nextEffect);
+	for(vector<ParticleEffect*>::iterator iter = deletedEffects.begin(); iter != deletedEffects.end(); iter++){
+		ParticleEffect* nextEffect = *iter;
+		RemoveEffect(nextEffect);
 	}
 }
 
 void ParticleSystem::Draw(Core::Graphics& graphics){
 	for(vector<ParticleEffect*>::iterator iter = particleEffects.begin(); iter != particleEffects.end(); iter++){
-			ParticleEffect* nextEffect = *iter;
-			nextEffect->draw(graphics);
+		ParticleEffect* nextEffect = *iter;
+		nextEffect->draw(graphics);
 	}
 }
 

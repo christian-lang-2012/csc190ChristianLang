@@ -10,10 +10,8 @@ public:
 	Vector2 position;
 	Vector2 velocity;
 	Vector2 lerpA;
-	float acceleration;
+	float acceleration, scale;
 	int health;
-	float scale;
-	
 
 	Enemy();
 	bool isAlive();

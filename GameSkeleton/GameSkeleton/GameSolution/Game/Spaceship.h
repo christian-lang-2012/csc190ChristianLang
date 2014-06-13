@@ -2,9 +2,6 @@
 #define SPACESHIP_H
 
 #include <sstream>
-#include "Shape.h"
-#include "Matrix2.h"
-#include "Matrix3.h"
 #include "Turret.h"
 
 using std::stringstream;
@@ -13,8 +10,9 @@ using Engine::Matrix3;
 class Boundary
 {
 public:
-	Boundary();
 	Shape boundaryShape;
+
+	Boundary();
 
 	void draw(Core::Graphics&);
 };
@@ -22,18 +20,18 @@ public:
 class Spaceship
 {
 public:
-	Spaceship();
-	Matrix3 transformationMatrix;
+	Turret turret;
 	Shape spaceshipShape;
+	Matrix3 transformationMatrix;
 	Vector2 startingPosition;
 	Vector2 currentPosition;
 	Vector2 velocity;
-	Turret turret;
 	Vector2 acceleration;
 	int health;
 	
 	float rotationMatrixConstant;
 	
+	Spaceship();
 	void draw(Core::Graphics&);
 	bool update(float dt, Boundary b, int boundaryType);
 	void DrawValue(Core::Graphics& g, int x, int y, float num);

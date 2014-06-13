@@ -14,7 +14,10 @@ void Draw(Core::Graphics& graphics)
 }
 
 void main()
-{	gi.Init();
+{	
+	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);
+
+	gi.Init();
 	Core::RegisterUpdateFn(Update);
 	Core::RegisterDrawFn(Draw);
 	Core::GameLoop();

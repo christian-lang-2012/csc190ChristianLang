@@ -2,7 +2,6 @@
 #define BUBBLE_EFFECT_H
 
 #include "ParticleEffect.h"
-#include "Randomizer.h"
 
 const float MIN_LIFETIME = 0.0f;
 const float MAX_LIFETIME = 3.0f;
@@ -15,10 +14,10 @@ class BubbleEffect : public ParticleEffect
 {
 public:
 	Vector2 position;
+	Randomizer rn;
 	float minVelocity, maxVelocity, angle, variance, minRadius, maxRadius;
 	bool isThrusting;
-	Randomizer rn;
-
+	
 	void Draw_MidpointCircle(Core::Graphics& graphics, float radius, Vector2 position);
 	BubbleEffect(float dragCoeff1, float decceleration1, ColorChangeType type1, Vector2 startPos1, float variance1, float angle1, float minVel1, float maxVel1, float minR1 = MIN_R_DEFAULT, float maxR1 = MAX_R_DEFAULT, int numberOfParticles = 1000)
 		: ParticleEffect(dragCoeff1, decceleration1, type1, numberOfParticles)

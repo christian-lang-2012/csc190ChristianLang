@@ -1,42 +1,30 @@
 #ifndef GAME_INITIALIZER_H
 #define GAME_INITIALIZER_H
-#include "Engine.h"
-#include "ExplosionEffect.h"
-#include "BubbleEffect.h"
-#include "ParticleSystem.h"
 #include "Spaceship.h"
-#include "Core.h"
 #include "EnemySpaceship.h"
-#include "RecursiveShape.h"
+#include "ParticleSystem.h"
+#include "Randomizer.h"
 #include "EnemyManager.h"
-#include "Logger.h"
-#include "Timer.h"
+#include "RecursiveShape.h"
+#include "BubbleEffect.h"
+#include "DebugMemory.h"
 
 using Core::Input;
 
 class GameInitializer
 {
 public:
+	ParticleSystem system;
+	EnemyManager enemySystem;
+	Bullet globalBullets[100];
 	Spaceship mySpaceship;
 	EnemySpaceship enemySpaceship;
 	Boundary boundary;
-	ParticleSystem system;
-	EnemyManager enemySystem;
-	Randomizer rando;
-	float fps, spf;
-	float constTimer, startTimer, deathTimer;
-	int killCounter;
-
-	Bullet globalBullets[100];
-
 	RecursiveShape rs;
-
-	int SCREEN_WIDTH;
-	int SCREEN_HEIGHT;
-	float width;
-	float height;
-	int boudnaryTypeStuff;
-	int bulletCounter;
+	Randomizer rando;
+	int killCounter, SCREEN_WIDTH, SCREEN_HEIGHT, boudnaryTypeStuff, bulletCounter;
+	float width, height, fps, spf, constTimer, startTimer, deathTimer;
+	unsigned int counts, sizes, highwater;
 	bool isPress;
 
 	GameInitializer(void);

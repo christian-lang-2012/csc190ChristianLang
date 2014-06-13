@@ -1,12 +1,11 @@
-﻿Build started 6/10/2014 9:48:23 PM.
+﻿Build started 6/11/2014 9:35:18 PM.
      1>Project "C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Game\Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Engine" /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Core\include" /ZI /nologo /W4 /WX /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D PROFILING_ENABLED /D LOG_ON /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt EnemyManager.cpp
-         EnemyManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Engine" /I"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Core\include" /ZI /nologo /W4 /WX /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D PROFILING_ENABLED /D LOG_ON /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\\" /LIBPATH:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\\Core\lib" /LIBPATH:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\\" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib Engine.lib Core.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\School Work\C++\csc190ChristianLang\GameSkeleton\GameSkeleton\GameSolution\Debug\Game.lib" /MACHINE:X86 Debug\BubbleEffect.obj
          Debug\Bullet.obj
-         Debug\ColorChangeType.obj
          Debug\Enemy.obj
          Debug\EnemyManager.obj
          Debug\EnemySpaceship.obj
@@ -26,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.35
+Time Elapsed 00:00:01.93

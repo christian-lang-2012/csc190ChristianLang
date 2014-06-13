@@ -2,7 +2,6 @@
 #define EXPLOSION_EFFECT_H
 
 #include "ParticleEffect.h"
-#include "Randomizer.h"
 
 const float MIN_VEL = 0.001f;
 
@@ -11,8 +10,9 @@ class ExplosionEffect : public ParticleEffect
 {
 public:
 	Vector2 position;
-	float minVelocity, maxVelocity;
 	Randomizer rn;
+	float minVelocity, maxVelocity;
+	
 
 	ExplosionEffect(float dragCoeff, float decceleration, ColorChangeType type,
 		Vector2 startPos, float minVel, float maxVel, int numberOfParticles = 1000)
